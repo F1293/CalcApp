@@ -35,28 +35,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String str2 = editText2.getText().toString();
         //Stringの変数に入れる
 
-        String fr = "";
-        //四則
+        float num1 = Float.valueOf(str1);
+        float num2 = Float.valueOf(str2);
+        //floatの値に変換
+
+        float ans = 0;
+        //答え
 
         switch (v.getId()) {
             case R.id.button1 :
-                fr = "+";
+                ans = num1 + num2;
                 break;
             case R.id.button2 :
-                fr = "-";
+                ans = num1 - num2 ;
                 break;
             case R.id.button3 :
-                fr = "*";
+                ans = num1 * num2;
                 break;
             case R.id.button4 :
-                fr = "/";
+                ans = num1 / num2;
             //default:
                 break;
         }
+        String a = "" + ans ;
+        //答えをString型に変換
 
-        intent.putExtra("STR1", str1);
-        intent.putExtra("STR2", str2);
-        intent.putExtra("FR", fr);
+        intent.putExtra("ANS", a);
         startActivity(intent);
         //値を送る
     }
