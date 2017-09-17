@@ -11,12 +11,18 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Button button1 = (Button) findViewById(R.id.button1);
+        Button button2 = (Button) findViewById(R.id.button2);
+        Button button3 = (Button) findViewById(R.id.button3);
+        Button button4 = (Button) findViewById(R.id.button4);
         button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
     }
 
     @Override
@@ -28,11 +34,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String str1 = editText1.getText().toString();
         String str2 = editText2.getText().toString();
         //Stringの変数に入れる
-        float num1 = Float.valueOf(str1);
-        float num2 = Float.valueOf(str2);
-        //floatの値に変換
-        intent.putExtra("VALUE1", 10);
-        intent.putExtra("VALUE2", 20);
+
+        String fr = "";
+        //四則
+
+        switch (v.getId()) {
+            case R.id.button1 :
+                fr = "+";
+                break;
+            case R.id.button2 :
+                fr = "-";
+                break;
+            case R.id.button3 :
+                fr = "*";
+                break;
+            case R.id.button4 :
+                fr = "/";
+            //default:
+                break;
+        }
+
+        intent.putExtra("STR1", str1);
+        intent.putExtra("STR2", str2);
+        intent.putExtra("FR", fr);
         startActivity(intent);
+        //値を送る
     }
 }
